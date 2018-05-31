@@ -1,43 +1,68 @@
 <div class="container">
+    <div class='row'>
+        
+             <div class='col-12' align= 'center'>
+                <form action="/sign_up" method="POST">
+                    <div>
+                        First Name:
+                        <input type="text" name="user_f_name">
+                   
+                        Last Name:
+                        <input type="text" name="user_l_name">
+                    </div>
 
-        <% @feed.reverse.each do |post| %>
-            <div class="row">
-                <div class="col-8">
-                    <div class="row">
-                        <div class="col-12 text-left">
-                            <h4>Operative: <%=post.user.f_name%>
-                        </div>
+                    <div>
+                        Email:
+                        <input type="text" name="user_email" style ="margin-left: 26px">
+                    
+                        Password:
+                        <input type="text" name="user_password" style ="margin-left: -22px">
                     </div>
-                    <div class="row">
-                        <div class="col-12 text-left">
-                            <h5>
-                                <%=post.name%>
-                            </h5>
-                        </div>
+                    <div>
+                        <input type="submit" value="Submit">
                     </div>
-                    <div class="row">
-                        <div class="col-12 text-left">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <img src="/public/images/bennett.jpg">
-                </div>
+                </form>
+              </div>
             </div>
         
-        <div class= "container">
-            <div class="row">
-                <div class="col-12 text-left">
-                    <h4>
-                        <%=post.body%>
-                    </h4>
-    
-                </div>
-                <h5>END TRANSMISSION</h5>
-            </div>
+        <div class='row'>
+            <div class="col-12">
+            
+           
+                <p>It's winter, and the cold has got you down. You got no cash for a movie, no patience for another hypnotic
+                    season of t.v. and no interest in beating your brain against a vodka rock and waking in the white, white
+                    morning to find out you'd sliced off the tip of your nose the night before. Why not have your chums over
+                    for Gore Fest, a rousing adventure game? With Gore Fest, a placid evening at home with a few close friends
+                    becomes a dangerous and morally compromised attempt to assassinate the prime minister of israel, or a
+                    nightmarish journey into the violence of the Egyptian heroin trade. Gore Fest is, in the truest sense,
+                    an adventure game -- every game is a blood-soaked, bare-knuckle adventure. In the secret sweat lodge
+                    where they will never die, Jim Thompson is playing Gore Fest with Ambrose Beirce. Playing Gore Fest requires
+                    no math. Its players do not have to memorize complex rules, and may enter the game in a matter of minutes.
+                    Gore Fest is an adventure game of the "role-play" type, where one player takes on the special role of
+                    "game master," a kind of referee and story-teller, and the rest of the group assume the "roles" of characters,
+                    the protagonists and antagonists of the night's story. The latter group, referred to simply as "players,"
+                    after the theatrical term, are responsible for directing the actions of their character alone. The success
+                    and failure of this character's endevours are determined by the game master with reference the rules
+                    and an element of random chance. Gore Fest, like poker, is a game of betting limited resources to ensure
+                    the success of audacious bluffs. Unlike poker, however, its lies are unlimited: each is the description
+                    of the next improbale action in a story, the next amazing shot in a movie's action sequence. But like
+                    a poker bluff, these lies may be less than convincing -- the game master might determine, after the appropriate
+                    dice are rolled, that only 30% or 50% or 75% of it actually "happens." Other players may lend dice to
+                    these rolls, to help ensure the success of particularly impressive or beneficial actions. But dice, like
+                    character health, are limited. The challenge of a night of Gore Fest is to accomplish the goal of the
+                    adventure before running out of dice, life and second chances. Characters may be played again and again,
+                    and adventures may be revisited through multiple sessions of play. A dedicated group of players may amuse
+                    themselves on a weekly (or even more frequent) basis revisiting the same scenario game after game, so
+                    that its story becomes a serial. Gore Fest tells stories about hard, often damaged people struggling
+                    with one another and themselves. A game might take place in a 1970s ghetto, at a modern day military
+                    flashpoint or at a meticulosuly mapped and realized parade route, which the players must turn into the
+                    successful assassination of the president of the united states. Often, the actions of its characters
+                    end in tragedy or disaster. But Gore Fest, like all role-play games, is not about strict winning or losing.
+                    Instead, the object of the game is to tell the most entertaining story possible, a goal shared equally
+                    by the game master and the players. Death and disgrace should be greeted with a smile because, after
+                    all, the game is only that -- a game. Recreational dying helps clear the sinuses -- and what better cure
+                    is there, for a bit of winter boredom, than to expire gracelessly from bleeding knife wounds while your
+                    friends look on and laugh?</p>
         </div>
-
     </div>
-    
-    
-            <%end%>
+</div>

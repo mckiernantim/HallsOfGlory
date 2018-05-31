@@ -1,12 +1,66 @@
  <h3>C://data/operatives/cover==deep/comms_intercepted:<%=User.find(@id).f_name%></h3>
     <% posts = Post.where(user_id: @id).reverse %>
-     <h3>C://data/operatives/cover==deep/comms_intercepted:<%=User.find(@id).f_name%></h3>
-    <% posts.each do |post|%>
-    <div>
-       time: <%%>
-       title: <%=post.name%>
-    </div>
-    <div>
-        <%=post.body%>
-    </div>
-    <%end%>
+     <div class="container">
+        <div class="row">
+            <div class="col-8">
+                <div class="row">
+                    <div class="col-12 text-left profile-row">
+                      <h3>C://data/operatives/cover==deep/comms_intercepted:<%=User.find(@id).f_name%></h3>
+                        </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 text-left profile-row">
+                        <h2>Gorenet Communiques:
+                            <%= user_posts = Post.where(user_id: @id).length.to_s%>
+                        </h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 text-left profile-row">
+                        <h2>
+                            <h5>
+                                <a type="submit" href="" class = "create_post">Re:</a>
+                            </h5> 
+                    </div>
+                </div>
+            </div>
+            <div class="col-4 profile-img">
+            
+                 <h1>PHOTO</h1>
+                    <form action="/save_image" method="POST" enctype="multipart/form-data">
+                        <input type="file" name="file">
+                        <input type="submit" value="Upload image">
+                    </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-left profile-link">
+                <h3 class ="glow">recent cables: <%=User.find(@id).f_name%> </h3>
+            </div>
+        </div>
+</div>
+    <% recent_posts = Post.where(user_id: @id)%>
+    <%if recent_posts.length  < 20 then recent_posts.each do |post| %>
+           <div class ='row'>
+                <div class='col-12 text-left'>
+                     <h5><a href ="/post/<%=post.id%>"><%=post.name%> </a></h5>
+                     
+                </div>
+            </div> 
+        </div>
+        <%end%>
+        <%else recent_posts = recent_posts.last(20).reverse%>
+        <div class ="container">
+            <% recent_posts.each do |post|%>
+            <div class="row">
+                <div class="col-12 text-left profile-link">
+                    <h4><a href ="/post/<%=post.id%>"><%=post.name%>  </a> </h4>
+                </div>
+            </div>
+       
+                <%end%>
+        </div>
+            <%end%>
+                </div>
+            </div>
+        </div>

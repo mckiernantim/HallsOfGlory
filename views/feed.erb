@@ -5,14 +5,30 @@
                 <div class="col-8 profile-row">
                     <div class="row">
                         <div class="col-12 text-left">
-                            <h4>Operative:<%=post.user.f_name%>
+                            
+                            <h4>Operative: <a href = "op/<%=post.user.id%>"><%=post.user.f_name%> </a>
+
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12 text-left">
                             <h5>
-                                <%=post.name%>
+
+                               <h5><a href ="/post/<%=post.id%>"><%=post.name%> </a></h5>
+                               
                             </h5>
+                        </div>
+                        <div class="col-12 text-left">
+                         <%if post.user.id == @current_user.id %>
+                            
+                            <h5>
+                                <a href= '/update/<%=post.id%>' class = "glow" >EDIT</a>
+                                <a href= '/delete_post/<%=post.id%>' class = "glow.red">DELETE COMM <a>
+                            
+                            </h5>
+                         
+                         <%end%>
+
                         </div>
                     </div>
                     <div class="row">
@@ -28,9 +44,9 @@
         <div class= "container">
             <div class="row">
                 <div class="col-12 text-left">
-                    <h4>
-                        <%=post.body%>
-                    </h4>
+                    <p>
+                        <%=post.preview%>
+                    </p>
     
                 </div>
                 <h5>END TRANSMISSION</h5>

@@ -15,10 +15,25 @@ function typeEffect(element, speed) {
 
 $( document ).ready(function() {
   var speed = 75;
-  var delay = $('h1').text().length * speed + speed;
-  typeEffect($('h1'), speed);
-  setTimeout(function(){
-    $('p').css('display', 'inline-block');
-    typeEffect($('p'), speed);
-  }, delay);
+  $('h1').each(function(index, element) {
+    var delay = $(element).text().length * speed + speed;
+    typeEffect($(element), speed);
+  });
+
+  $('p').each(function(index, element) {
+    var delay_p = 3;
+    speed = 9;
+    console.log(delay_p)
+    typeEffect($(element), speed);
+
+    setTimeout(function(){
+      $('p').css('display', 'inline-block');
+      typeEffect($(element), speed);
+    }, delay_p);
+  })
+  
+//   setTimeout(function(){
+//     $('p').css('display', 'inline-block');
+//     typeEffect($('p'), speed);
+//   }, delay);
 });

@@ -21,13 +21,13 @@
                     <div class="col-12 text-left profile-row">
                         <h2>
                             <h5>
-                                <a type="submit" href="/deleted">Destroy Profile</a>
+                                <a type="submit" href="/delete_user/<%=session[:user_id]%>">Destroy Profile</a>
                             </h5> 
                     </div>
                 </div>
             </div>
             <div class="col-4 profile-img">
-            <%if %>
+            
                  <h1>Upload Image</h1>
                     <form action="/save_image" method="POST" enctype="multipart/form-data">
                         <input type="file" name="file">
