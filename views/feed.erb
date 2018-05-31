@@ -1,0 +1,21 @@
+
+<% @feed.reverse.each do |post| %>
+    <div>
+    <h3> time will go here</h3>
+    
+    <h4>Operative: <%=post.user.f_name%>
+     </div>
+    <div>
+        <h5>Begin Transmission</h5>
+        <h5><%=post.name%> </h5>
+    </div>
+    <div>
+        <p> <%=post.body%> </p>
+    </div>
+        <h5>transmission terminated.</h5>
+        
+    
+        <%end%>
+
+
+

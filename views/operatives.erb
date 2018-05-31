@@ -1,0 +1,11 @@
+<h1>KNOWN OPERATIVES</h1>
+    <% @operatives.each do |user|%>
+    <div> 
+        <h2> Name: <%=user.f_name%> </h2>
+     
+        <h2> <a href='/op/<%=user.id%>'>>Comminuqe list</a></h2>
+            <% @post_list = Post.where(user_id: user.id) %>
+        <h3> Listings: <%=@post_list.length%>  </h3>
+        <%end%>
+    
+    </dv>

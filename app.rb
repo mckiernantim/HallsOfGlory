@@ -5,6 +5,8 @@ require 'shotgun'
 require 'mailgun'
 
 require './models'
+require 'byebug'
+
 # a cookie for login info 
 set :session_secret, ENV['HALL_PASS']
 enable :sessions
@@ -14,15 +16,28 @@ get('/') do
     erb :index
 end
 
-get('/dashboard')do
-current_user = session[:user_id]
-if current_user.nil? 
-    return redirect'/'
+get('/deleted') do
+   
+    erb :deleted
 end
-@current_user = User.find(current_user)
+get('/delete_user') do
+   User.delete(session[:user_id])
+   redirect ('/')
+end
+get('/profile')do
 
-erb :dashboard
 
+    erb :profile
+end
+
+get('/dashboard')do
+    current_user = session[:user_id]
+    if current_user.nil? 
+        return redirect'/'
+end
+    @current_user = User.find(current_user)
+
+    erb :dashboard
 end
 
 get('/login') do
@@ -33,6 +48,12 @@ get('/sign_up') do
     erb :sign_up
 end
 
+get('/operatives')do
+    @operatives = User.all
+    erb :operatives
+   
+
+end
 
 get('/create') do
     erb :create  
@@ -43,7 +64,27 @@ get('/logout') do
     redirect ('/')
 end
 
+get('/feed') do
+    @feed = Post.all.last(20)
+    current_user = session[:user_id]
+    if current_user.nil? 
+        return redirect'/'
+    end
+    @current_user = User.find(current_user)
+    erb :feed
+end
 
+get('/op/:op_number')do
+    @id = params[:op_number].to_i
+
+    erb :op
+end
+
+get('/post/:id')do
+    @id = params[:id].to_i
+
+    erb :post
+end
 post('/sign_up') do
     this_user = User.find_by(email: params[:user_email])
         if this_user != nil
@@ -57,6 +98,7 @@ post('/sign_up') do
         password: params[:user_password]
     )
         session[:user_id] = this_user.id
+
 
     redirect('/')
     end
@@ -73,7 +115,7 @@ post('/login') do
     end
     session[:user_id] = this_user.id
     
-    return redirect ('/dashboard')
+    return redirect ('/feed')
    
 end
 
@@ -86,12 +128,13 @@ post('/create') do
         body: params[:post_body],
         # tag: params[:tags],
         preview: params[:post_body].truncate(20),
-         author_id: session[:user_id]
+         user_id: session[:user_id]
+        #  time: Time.now
     )
   
         
         
-        redirect ('dashboard')
+        redirect ('/feed')
 
    
 end
