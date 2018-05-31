@@ -1,21 +1,58 @@
+<div class="container">
 
-<% @feed.reverse.each do |post| %>
-    <div>
-    <h3> time will go here</h3>
-    
-    <h4>Operative: <%=post.user.f_name%>
-     </div>
-    <div>
-        <h5>Begin Transmission</h5>
-        <h5><%=post.name%> </h5>
-    </div>
-    <div>
-        <p> <%=post.body%> </p>
-    </div>
-        <h5>transmission terminated.</h5>
+        <% @feed.reverse.each do |post| %>
+            <div class="row">
+                <div class="col-8 profile-row">
+                    <div class="row">
+                        <div class="col-12 text-left">
+                            
+                            <h4>Operative: <a href = "op/<%=post.user.id%>"><%=post.user.f_name%> </a>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 text-left">
+                            <h5>
+
+                               <h5><a href ="/post/<%=post.id%>"><%=post.name%> </a></h5>
+                               
+                            </h5>
+                        </div>
+                        <div class="col-12 text-left">
+                         <%if post.user.id == @current_user.id %>
+                            
+                            <h5>
+                                <a href= '/update/<%=post.id%>' class = "glow" >EDIT</a>
+                                <a href= '/delete_post/<%=post.id%>' class = "glow.red">DELETE COMM <a>
+                            
+                            </h5>
+                         
+                         <%end%>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 text-left">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 profile-img">
+                    <img src="/public/images/bennett.jpg">
+                </div>
+            </div>
         
+        <div class= "container">
+            <div class="row">
+                <div class="col-12 text-left">
+                    <p>
+                        <%=post.preview%>
+                    </p>
     
-        <%end%>
+                </div>
+                <h5>END TRANSMISSION</h5>
+            </div>
+        </div>
+    <%end%>
+        </div>
 
-
-
+            

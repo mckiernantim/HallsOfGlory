@@ -1,18 +1,26 @@
 <div class = "row">
+
+<% current_user = User.find(session[:user_id]) %>
+
      <div class= 'col-12'>
-         <h1>ESTABLISHING COMMS UPLINK WITH GORENET SERVERS.......</h1>
-            <% current_user = User.find(session[:user_id])  %>
-         <p class> CHANEL OPEN  COMMLINK_ESTABLISHED GO AHEAD <%=current_user.f_name%></p>
+         <h1>RETREIVING COMMS DATA ON USER  <%=current_user.f_name%></h1>
+         <h1> Comms cable <%@this_post.id%><h1>
+         post time
+            
+         
     </div>  
 </div>
 <div class="row">
      <div class ='col-12'>
-         <form acton = "/create" method = "POST">
+         <form acton = "/update/<%@this_post.id%>" method = "POST">
             <div>
                 <input type = "text" name = "post_name" placeholder = "title" class ="post_create">
             </div> 
             <div>
-                 <textarea  placeholder = "Text(optional)" rows="4" cols="50" name = "post_body" class = 'post_create'></textarea>
+                 <textarea  placeholder = "Text(optional)" rows="25" cols="100" name = "post_body" class = 'post_create'>
+                     <%=@this_post.body%>
+                 </textarea>
+                 
              </div>
      </div> 
 </div>
@@ -22,3 +30,4 @@
            </form> 
         </div>    
     </div>    
+
