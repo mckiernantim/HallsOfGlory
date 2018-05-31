@@ -1,11 +1,25 @@
-<h1> Write something here </h1>
-    <form acton = "/create" method = "POST">
-        <div>
-            <input type = "text" name = "post_name" placeholder = "title">
-         </div>  
-         <div>
-            <textarea  placeholder = "Text(optional)" rows="4" cols="50" name = "post_body"></textarea>
-        </div>
-        <input type = "submit" value = "Post">
-        <button href = "/dashboard" value = "Cancel"> Cancel</button>           
-</form>
+<div class = "row">
+     <div class= 'col-12'>
+         <h1>ESTABLISHING COMMS UPLINK WITH GORENET SERVERS.......</h1>
+            <% current_user = User.find(session[:user_id])  %>
+         <P> CHANEL OPEN  COMMLINK_ESTABLISHED GO AHEAD <%=current_user.f_name%></p>
+    </div>  
+</div>
+<div class="row">
+     <div class ='col-12'>
+         <form acton = "/create" method = "POST">
+            <div>
+                <input type = "text" name = "post_name" placeholder = "title">
+            </div> 
+            <div>
+                 <textarea  placeholder = "Text(optional)" rows="4" cols="50" name = "post_body"></textarea>
+             </div>
+     </div> 
+</div>
+            <div>
+                
+                <input type = "submit" value = "Execute">
+            <button href = "/dashboard" value = "Cancel"> Cancel</button>   
+           </form> 
+        </div>    
+    </div>    

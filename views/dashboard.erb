@@ -1,12 +1,34 @@
 
-<h1>Welcome <%= @current_user.f_name%> To Your Dashboard.  Where to?</h1>
 
-<h3> <a href = "/create">Post </a</h3>
+   
+    <% recent_posts = Post.where(author_id: session[:user_id])%>
+    <%if recent_posts.length  < 20 then recent_posts.each do |post| %>
+    <div> 
+        <h3>begin transmission</h3>
+        <div>
+            <h4>Operative profile: <%=post.user.f_name%>
+        </div>
+        <div>
+            <h5><%=post.name%> </h5>
+        </div>
+            <p> <%=post.body%> </p>
+        </div>
+            <h3>transmission terminated</h3>
+        </div>
+        
+        <%end%>
+        <%else recent_posts = recent_posts.last(20)%>
+            <% recent_posts.each do |post|%>
+                <div>
+                    <h5><%=post.name%> </h5>
+                </div>
+                <div>
+                    <p> <%=post.body%> </p>
+                </div>
+                <%end%>
 
-
-
-
-
+    <%end%>
+   
     <div>
         <a href ="/logout" value = "Sign Out">Sign Out </a>
     </div>

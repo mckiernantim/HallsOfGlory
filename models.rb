@@ -1,13 +1,13 @@
 require 'sinatra/activerecord'
 
 class User < ActiveRecord::Base
-    has_many :Posts
+    has_many :posts
 
 
 end
 
 class Post < ActiveRecord::Base
-    belongs_to :User
+    belongs_to :user
 
 
 end
