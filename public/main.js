@@ -1,4 +1,3 @@
-
 function typeEffect(element, speed) {
 	var text = $(element).text();
 	$(element).html('');

@@ -27,6 +27,7 @@ end
 get('/profile')do
 
 
+
     erb :profile
 end
 
@@ -80,10 +81,11 @@ get('/op/:op_number')do
     erb :op
 end
 
-get('/post/:id')do
-    @id = params[:id].to_i
-
+get('/post/:num')do
+    @id = params[:num].to_i
+    @this_post = Post.find(@id)
     erb :post
+   
 end
 post('/sign_up') do
     this_user = User.find_by(email: params[:user_email])
@@ -131,13 +133,20 @@ post('/create') do
          user_id: session[:user_id]
         #  time: Time.now
     )
-  
-        
-        
-        redirect ('/feed')
-
-   
+    redirect ('/feed')
 end
+
+post '/save_image' do
+
+    @filename = params[:file][:filename]
+    file = params[:file][:tempfile]
+  
+    File.open("./public/#{@filename}", 'wb') do |f|
+      f.write(file.read)
+    end
+  
+    redirect('/profile')
+  end
 
 
 

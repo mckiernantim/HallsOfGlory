@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row">
+        <div class='col-8'>
+            <div class="row">
+                <div>
+                    <div class="col-12">
+
+                        <% current_user = User.find(session[:user_id])  %>
+                            <h1>Operative Profile Name:
+                                <%=current_user.f_name%>
+                            </h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <h2>Gorenet Communiques:
+                        <%= user_posts = Post.where(user_id: session[:user_id]).length.to_s%>
+                    </h2>
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col-12'>
+                    <h5>
+                        <a type="submit" href="/deleted">Destroy Profile</a>
+                    </h5>
+                </div>
+            </div>
+        </div>
+        <div class='col-4'>
+      
+</div>
+</div>

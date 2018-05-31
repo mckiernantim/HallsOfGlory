@@ -1,33 +1,68 @@
 
-<h1>Operative Profile</h1>
-    <% current_user = User.find(session[:user_id])  %>
-    <h2>Name: <%=current_user.f_name%> </h2>
-  
-    <h2>Gorenet Communiques: <%= user_posts = Post.where(user_id: session[:user_id]).length.to_s%>
-<h5><a type = "submit" href = "/deleted">Destroy Profile</a></h5> 
 
-  <% recent_posts = Post.where(user_id: session[:user_id])%>
-  <%if recent_posts.length  < 20 then recent_posts.each do |post| %>
-    <div> 
-        <h3>begin transmission</h3>
-        <div>
-            <h4>Operative profile: <%=post.user.f_name%>
+    <div class="container">
+        <div class="row">
+            <div class="col-8">
+                <div class="row">
+                    <div class="col-12 text-left profile-row">
+                        <% current_user = User.find(session[:user_id])  %>
+                            <h1>Operative Profile Name:
+                                <%=current_user.f_name%>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 text-left profile-row">
+                        <h2>Gorenet Communiques:
+                            <%= user_posts = Post.where(user_id: session[:user_id]).length.to_s%>
+                        </h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 text-left profile-row">
+                        <h2>
+                            <h5>
+                                <a type="submit" href="/deleted">Destroy Profile</a>
+                            </h5> 
+                    </div>
+                </div>
+            </div>
+            <div class="col-4 profile-img">
+            <%if %>
+                 <h1>Upload Image</h1>
+                    <form action="/save_image" method="POST" enctype="multipart/form-data">
+                        <input type="file" name="file">
+                        <input type="submit" value="Upload image">
+                    </form>
+            </div>
         </div>
-        <div>
-            <h5><%=post.name%> </h5>
+        <div class="row">
+            <div class="col-12 text-left profile-link">
+                <h3>recent cables</h3>
+            </div>
         </div>
-            <h5> <%=post.body%> </h5>
+</div>
+    <% recent_posts = Post.where(user_id: session[:user_id])%>
+    <%if recent_posts.length  < 20 then recent_posts.each do |post| %>
+           <div class ='row'>
+                <div class='col-12 text-left'>
+                     <h5><a href ="/post/<%=post.id%>"><%=post.name%> </a></h5>
+                     
+                </div>
+            </div> 
         </div>
-            <h3>transmission terminated</h3>
-        </div>
-        
-    <%end%>
-  
-    <%else recent_posts = recent_posts.last(20)%>
-       <% recent_posts.each do |post|%>
-          <div>
-            <h2><a href ="/post/<%=post.id%>"><%=post.name%>  </a> </h2>
-         </div>
         <%end%>
-
-    <%end%>
+        <%else recent_posts = recent_posts.last(20).reverse%>
+        <div class ="container">
+            <% recent_posts.each do |post|%>
+            <div class="row">
+                <div class="col-12 text-left profile-link">
+                    <h4><a href ="/post/<%=post.id%>"><%=post.name%>  </a> </h4>
+                </div>
+            </div>
+       
+                <%end%>
+        </div>
+            <%end%>
+                </div>
+            </div>
+        </div>
