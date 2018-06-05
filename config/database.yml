@@ -4,8 +4,6 @@ defaults: &defaults
   pool: 5
   timeout: 5000
   
-
-
 development:
   <<: *defaults
   database: HallOfGlory
