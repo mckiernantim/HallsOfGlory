@@ -1,4 +1,4 @@
-Inline-style: 
+
 ![alt text](https://github.com/mckiernantim/HallsOfGlory/public/images/screen_banner)
 
 # GORENET
