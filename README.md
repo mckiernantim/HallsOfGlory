@@ -1,5 +1,5 @@
 Inline-style: 
-![alt text](https://github.com/mckiernantim/HallsOfGlory/public/"Screen Shot 2018-06-01 at 3.12.39 PM")
+![alt text](https://github.com/mckiernantim/HallsOfGlory/public/images/screen_banner)
 
 # GORENET
 ## A message board built to promote the launch of GOREFEST, an tabletop RPG.
