@@ -1,5 +1,5 @@
 
-![alt text](https://github.com/mckiernantim/HallsOfGlory/public/images/screen_banner)
+![alt text](https://github.com/mckiernantim/HallsOfGlory/public/images/screen_banner.png)
 
 # GORENET
 ## A message board built to promote the launch of GOREFEST, an tabletop RPG.
