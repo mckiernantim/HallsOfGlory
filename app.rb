@@ -1,18 +1,21 @@
 require 'sinatra'
-
-require 'shotgun'
-
+# require 'shotgun'  we don't need to require this
 require 'mailgun'
-
 require './models'
 require 'byebug'
+
+# I don't have much to say about this app.rb file. Except for a few indentation issues,
+# I would say that it's pretty solid. Good job.
+#
+# The erb files need some work. The indentation issues in those is making it hard for me to 
+# read. If you want to fix them and push up the changes I'll re-take a look at them.
+# Cheers
 
 # a cookie for login info 
 set :session_secret, ENV['HALL_PASS']
 enable :sessions
 
 get('/') do
-   
     erb :index
 end
 
@@ -22,21 +25,16 @@ get('/deleted') do
 end
 
 get('/deleted/:delete_id')do
-@delete_id = params[:delete_id]
-
-
+    @delete_id = params[:delete_id]
     erb :deleted
 end
+
 get('/delete_post/:post_id')do
-
-  
-   @this_post = Post.find(params[:post_id])
-    
+    @this_post = Post.find(params[:post_id])
     @this_post.delete
-
     redirect ('/feed')
-
 end
+
 get('/delete_user/:user_id') do
     @this_user = User.find(session[:user_id])
    
@@ -48,10 +46,8 @@ get('/confirm_delete/:user_id') do
     User.delete(this_user)
     redirect ('/')
 end
+
 get('/profile')do
-
-
-
     erb :profile
 end
 
@@ -59,7 +55,7 @@ get('/dashboard')do
     current_user = session[:user_id]
     if current_user.nil? 
         return redirect'/'
-end
+    end
     @current_user = User.find(current_user)
 
     erb :dashboard
@@ -74,14 +70,12 @@ get('/sign_up') do
 end
 
 get('/operatives')do
-current_user = session[:user_id]
+    current_user = session[:user_id]
     if current_user.nil? 
         return redirect'/'
     end
     @operatives = User.all
     erb :operatives
-   
-
 end
 
 get('/create') do
@@ -109,9 +103,9 @@ end
 
 
 get('/op/:op_number')do
- current_user = session[:user_id]
+    current_user = session[:user_id]
     if current_user.nil? 
-    return redirect'/'
+        return redirect'/'
     end
     @id = params[:op_number].to_i
 
@@ -122,17 +116,17 @@ get('/post/:num')do
     current_user = User.find(session[:user_id])
 
     if current_user.nil? 
-    return redirect'/'
+        return redirect'/'
     end
     @id = params[:num].to_i
     @this_post = Post.find(@id)
     erb :post
-   
 end
+
 post('/sign_up') do
     this_user = User.find_by(email: params[:user_email])
-        if this_user != nil
-            return redirect '/login'
+    if this_user != nil
+        return redirect '/login'
     end
 
     this_user = User.create(
@@ -141,15 +135,12 @@ post('/sign_up') do
         email:  params[:user_email],
         password: params[:user_password]
     )
-        session[:user_id] = this_user.id
-
+    session[:user_id] = this_user.id
 
     redirect('/')
 end
 
 post('/login') do
-    
-    
     this_user = User.find_by(email: params[:user_email])
     if this_user.nil?
         return redirect('/login')
@@ -160,21 +151,15 @@ post('/login') do
     end
     session[:user_id] = this_user.id
     
-    return redirect ('/feed')
-   
+    redirect ('/feed')
 end
-
-   
-
 
 post('/create') do
     this_post = Post.create(
         name:  params[:post_name],
         body: params[:post_body],
-        # tag: params[:tags],
         preview: params[:post_body].truncate(50),
-         user_id: session[:user_id]
-        #  time: Time.now
+        user_id: session[:user_id]
     )
     redirect ('/feed')
 end
@@ -190,9 +175,9 @@ post('/save_image') do
     end
   
     redirect
-  end
+end
 
-  get('/update/:post_id')do
+get('/update/:post_id')do
 
   @current_user = User.find(session[:user_id])
   if @current_user.nil? 
