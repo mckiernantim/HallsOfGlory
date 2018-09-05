@@ -5,7 +5,7 @@
 ## A message board built to promote the launch of GOREFEST, an tabletop RPG.
 
 
-### Built With
+### Implimented With
   * Sinatra - micro framework for ruby
   * Postrgess
   * Active Record
