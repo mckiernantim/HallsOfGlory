@@ -57,4 +57,4 @@ The completed assignment should:
        
        
 ## Future
- The current version is built using Sinatra.  Future version will be redeployed via  Ruby on Rails.  Using ActiveStorage image uploading will be built in and additionaly user authentication via Devise for launch with the game.  
+GORENET is currently live at <https://gorenet.herokuapp.com/> . Image Uploads will be added in the future via ActiveStorage and AWS storage.
