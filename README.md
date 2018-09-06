@@ -1,4 +1,4 @@
-
+![alt text](https://github.com/mckiernantim/HallsOfGlory/blob/master/banner.png)
 
 # GORENET
 ### A message board built to promote the launch of GOREFEST, an tabletop RPG.
